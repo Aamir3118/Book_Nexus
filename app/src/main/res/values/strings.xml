@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Books_App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Log in</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="next">Continue</string>
+    <string name="or">Or</string>
+    <string name="login_with_fb">Login with Facebook</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="login_with_apple">Login with Apple</string>
+    <string name="don_t_have_">Don\'t have an account? Sign up</string>
+    <string name="forgot_your">Forgot your password? Don\'t worry, enter your email to reset your current password.</string>
+    <string name="submit">Submit</string>
+    <string name="recover_pas">Recover Password</string>
+    <string name="page_title">Back to Log in</string>
+    <string name="looks_like_">Looks like you don\'t have an account.\nLet\'s create a new account for you.</string>
+    <string name="terms">By selecting Create Account below, I agree to Terms of Service &amp; Privacy Policy</string>
+    <string name="already_hav">Already have an account? Log in</string>
+    <string name="john_doe">John Doe</string>
+    <string name="john_doe_ex">john.doe@example.com</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="an_authentication">An authentication code has been sent to your email.</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="verify">Verify</string>
+    <string name="don_t_receive">Don\'t receive a code?</string>
+    <string name="resend">Resend</string>
+    <string name="set_password">Set Password</string>
+    <string name="code_verified">Code verified</string>
+    <string name="enter_new_p">Enter new password</string>
+    <string name="re_type_new">Re-type new password</string>
+    <string name="at_least_8_">At-least 8 characters</string>
+    <string name="select_genre">Select Genres</string>
+    <string name="select_the_">Select the type of book you enjoy reading.</string>
+    <string name="fiction">Fiction</string>
+    <string name="show_more">Show more</string>
+    <string name="select_3_or">Select 3 or more genres to continue</string>
+</resources>

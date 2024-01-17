@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/books_graph"
+    app:startDestination="@id/loginEmailFragment">
+
+    <fragment
+        android:id="@+id/loginEmailFragment"
+        android:name="com.example.books_app.LoginEmailFragment"
+        android:label="fragment_login_email"
+        tools:layout="@layout/fragment_login_email" >
+        <action
+            android:id="@+id/action_loginEmailFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginEmailFragment_to_loginPasswordFragment"
+            app:destination="@id/loginPasswordFragment" />
+        <action
+            android:id="@+id/action_loginEmailFragment_to_forgotPasswordFragment2"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.books_app.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/loginPasswordFragment"
+        android:name="com.example.books_app.LoginPasswordFragment"
+        android:label="fragment_login_password"
+        tools:layout="@layout/fragment_login_password" >
+        <action
+            android:id="@+id/action_loginPasswordFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.books_app.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_forgotPasswordCodeFragment"
+            app:destination="@id/forgotPasswordCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordCodeFragment"
+        android:name="com.example.books_app.ForgotPasswordCodeFragment"
+        android:label="fragment_forgot_password_code"
+        tools:layout="@layout/fragment_forgot_password_code" >
+        <action
+            android:id="@+id/action_forgotPasswordCodeFragment_to_setPasswordFragment"
+            app:destination="@id/setPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setPasswordFragment"
+        android:name="com.example.books_app.SetPasswordFragment"
+        android:label="fragment_set_password"
+        tools:layout="@layout/fragment_set_password" />
+    <fragment
+        android:id="@+id/genrePreferencesFragment"
+        android:name="com.example.books_app.GenrePreferencesFragment"
+        android:label="fragment_genre_preferences"
+        tools:layout="@layout/fragment_genre_preferences" />
+</navigation>
