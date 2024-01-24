@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/rl_trending"
+    >
+    <TextView
+        android:id="@+id/trending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trending"
+        android:textAppearance="@style/minutes_rea"
+        />
+    <LinearLayout
+        android:id="@+id/showAllIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_all"
+            android:text="@string/show_all"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/show_all"
+            />
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:id="@+id/fa_solid_ch"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/icon_next_forward"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

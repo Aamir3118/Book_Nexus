@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl_5_min"
+    >
+    <TextView
+        android:id="@+id/trending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minutes_rea"
+        android:textAppearance="@style/minutes_rea"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/show_all"
+        android:text="@string/show_all"
+        android:layout_toLeftOf="@+id/fa_solid_ch"
+        android:textAppearance="@style/show_all"
+        />
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:id="@+id/fa_solid_ch"
+        android:layout_marginLeft="4dp"
+        android:src="@drawable/circle_right"
+        android:layout_alignParentEnd="true"
+        />
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/book_home_graph"
+    app:startDestination="@id/homeScreen1Fragment">
+
+    <fragment
+        android:id="@+id/homeScreen1Fragment"
+        android:name="com.example.books_app.ui.fragments.HomeScreen1Fragment"
+        android:label="fragment_home_screen1"
+        tools:layout="@layout/fragment_home_screen1" >
+        <action
+            android:id="@+id/action_homeScreen1Fragment_to_detailPageFragment2"
+            app:destination="@id/detailPageFragment2" />
+    </fragment>
+    <action
+        android:id="@+id/action_homeScreen1Fragment_to_genrePreferencesFragment"
+        app:destination="@id/genrePreferencesFragment" />
+    <fragment
+        android:id="@+id/detailPageFragment2"
+        android:name="com.example.books_app.ui.fragments.DetailPageFragment"
+        android:label="fragment_detail_page"
+        tools:layout="@layout/fragment_detail_page" >
+        <argument
+            android:name="selected_episode"
+            app:nullable="true"
+            app:argType="com.example.books_app.model.Episode" />
+        <action
+            android:id="@+id/action_detailPageFragment2_to_audioPlayerFragment2"
+            app:destination="@id/audioPlayerFragment2" />
+        <action
+            android:id="@+id/action_detailPageFragment2_to_homeScreen1Fragment"
+            app:destination="@id/homeScreen1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/audioPlayerFragment2"
+        android:name="com.example.books_app.ui.fragments.AudioPlayerFragment"
+        android:label="fragment_audio_player"
+        tools:layout="@layout/fragment_audio_player">
+        <argument
+            android:name="selected_episode2"
+            app:nullable="true"
+            app:argType="com.example.books_app.model.Episode" />
+        <action
+            android:id="@+id/action_audioPlayerFragment2_to_detailPageFragment2"
+            app:destination="@id/detailPageFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/audioPlayerExpandedFragment2"
+        android:name="com.example.books_app.ui.fragments.AudioPlayerExpandedFragment"
+        android:label="fragment_audio_player_expanded"
+        tools:layout="@layout/fragment_audio_player_expanded" />
+</navigation>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame_47_txt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/custom_txt_bg"
+    >
+    <TextView
+        android:id="@+id/personal_gr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_gr"
+        android:textAppearance="@style/personal_gr"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

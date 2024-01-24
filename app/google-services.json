@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "70883115641",
+    "project_id": "book-nexus-15cf5",
+    "storage_bucket": "book-nexus-15cf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70883115641:android:786fd729a44fb10fbc0aa8",
+        "android_client_info": {
+          "package_name": "com.example.books_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70883115641-s75srsd78hbvpk46l8l6hqldq2dr3s3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.books_app",
+            "certificate_hash": "d53acf1a2a8a603bfce4499090da4fdb7fb2f849"
+          }
+        },
+        {
+          "client_id": "70883115641-s9rjljfiqp0a6ihmvqke56tfpor304fq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8c_cd05IQx0TUVObvMNWG9L-kbGL0frI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70883115641-s9rjljfiqp0a6ihmvqke56tfpor304fq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

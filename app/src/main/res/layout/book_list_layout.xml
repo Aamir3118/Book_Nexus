@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_25"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/showAllExplore"
+            layout="@layout/custom_trending_show_all"/>
+
+        <RelativeLayout
+            android:id="@+id/frame_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/showAllExplore"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcExplore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="1"
+                tools:listitem="@layout/custom_explore_layout"
+                />
+        </RelativeLayout>
+</RelativeLayout>

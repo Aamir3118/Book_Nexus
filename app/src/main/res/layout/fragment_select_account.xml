@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#181A1A"
+    tools:context=".fragments.SelectAccountFragment">
+
+    <include
+        layout="@layout/listing_page_app_bar"/>
+
+    <RelativeLayout
+        android:id="@+id/frame_26087"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/top_navigate">
+        <TextView
+            android:id="@+id/payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment"
+            android:textAppearance="@style/add_payment"
+            android:gravity="center_vertical"
+            />
+        <RelativeLayout
+            android:layout_alignParentEnd="true"
+            android:id="@+id/frame_64"
+            android:layout_width="130dp"
+            android:layout_height="42dp"
+            android:padding="12dp"
+            android:background="@drawable/add_card_lay"
+            >
+            <TextView
+                android:id="@+id/add_a_card"
+                android:layout_width="78dp"
+                android:layout_height="17dp"
+                android:text="Add a card"
+                android:textSize="14sp"
+                android:textColor="#C4CCCC"
+                android:gravity="center_vertical"
+                />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/uil_plus"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frame_26087"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
+        tools:itemCount="1"
+        tools:listitem="@layout/add_card_lay"
+        />
+
+    <RelativeLayout
+        android:id="@+id/frame_47"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="109dp"
+        android:gravity="center"
+        android:background="@drawable/btn_continue_layout"
+        >
+        <ImageView
+            android:id="@+id/add_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/uil_plus"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/add_btn"
+            android:text="@string/add_new_payment_method"
+            android:layout_marginStart="20dp"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

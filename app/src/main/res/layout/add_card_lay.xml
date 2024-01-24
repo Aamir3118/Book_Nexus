@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame_26087"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    >
+    <RelativeLayout
+        android:id="@+id/frame_26086"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_continue_layout"
+        >
+        <ImageView
+            android:id="@+id/visa"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/uim_master"
+            android:layout_centerVertical="true"
+            />
+        <RelativeLayout
+            android:layout_toRightOf="@id/visa"
+            android:id="@+id/frame_26086_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </RelativeLayout>
+        <RadioButton
+            android:layout_toLeftOf="@id/trash"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/checked"
+            />
+        <ImageView
+            android:id="@+id/trash"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/uil_trash"
+            />
+    </RelativeLayout>
+</RelativeLayout>

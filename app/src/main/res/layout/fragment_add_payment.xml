@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.AddPaymentFragment"
+    android:background="#181A1A"
+    >
+
+    <include
+        layout="@layout/listing_page_app_bar"/>
+
+    <RelativeLayout
+        android:id="@+id/frame_151"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/top_navigate"
+        >
+        <TextView
+            android:id="@+id/add_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_payment"
+            android:textAppearance="@style/add_payment"
+            android:lineSpacingExtra="-2sp"
+            android:gravity="center_vertical"
+            />
+        <TextView
+            android:id="@+id/ulimited_in"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/add_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ulimited_in"
+            android:textAppearance="@style/ulimited_in"
+            android:gravity="center_vertical"
+            />
+    </RelativeLayout>
+
+    <include
+        layout="@layout/payment_edit_text_lay"/>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/button"
+        android:layout_width="358dp"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_continue_layout"
+        android:alpha="0.5"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp"
+        >
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_payment"
+            android:textSize="14sp"
+            android:textColor="#2D3047"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

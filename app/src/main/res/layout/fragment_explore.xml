@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="#181A1A"
+    tools:context=".ui.fragments.ExploreFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                layout="@layout/top_heading_layout"/>
+
+            <RelativeLayout
+                android:id="@+id/frame_44"
+                android:layout_width="358dp"
+                android:layout_height="45dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="115dp"
+                android:background="@drawable/search_bar_layout"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/icon_search"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icons_search"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/title_author"
+                    android:textAppearance="@style/title_author"
+                    android:layout_marginStart="16dp"
+                    android:layout_toRightOf="@+id/icon_search"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/transparent"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/frame_53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/frame_44"
+                >
+                <TextView
+                    android:id="@+id/topics"
+                    android:layout_width="66dp"
+                    android:layout_height="24dp"
+                    android:text="@string/topics"
+                    android:textAppearance="@style/topics"
+                    android:gravity="center_vertical"
+                    />
+                <RelativeLayout
+                    android:id="@+id/frame_51"
+                    android:layout_below="@id/topics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/topicsRv"
+                        tools:listitem="@layout/topics_layout"
+                        tools:itemCount="1"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_below="@id/frame_53"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                >
+                <include
+                    android:id="@+id/book_list"
+                    layout="@layout/book_list_layout"
+                    />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

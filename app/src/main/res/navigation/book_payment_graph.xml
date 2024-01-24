@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/book_payment_graph"
+    app:startDestination="@id/premiumPlansFragment">
+
+    <fragment
+        android:id="@+id/premiumPlansFragment"
+        android:name="com.example.books_app.ui.fragments.PremiumPlansFragment"
+        android:label="fragment_premium_plans"
+        tools:layout="@layout/fragment_premium_plans" />
+    <fragment
+        android:id="@+id/successPaymentFragment"
+        android:name="com.example.books_app.ui.fragments.SuccessPaymentFragment"
+        android:label="fragment_success_payment"
+        tools:layout="@layout/fragment_success_payment" />
+    <fragment
+        android:id="@+id/subscriptionEndFragment"
+        android:name="com.example.books_app.ui.fragments.SubscriptionEndFragment"
+        android:label="fragment_subscription_end"
+        tools:layout="@layout/fragment_subscription_end" />
+</navigation>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="#181A1A"
+    tools:context=".ui.fragments.BookListingFragment">
+
+    <include
+        android:id="@+id/backIconLay"
+        layout="@layout/listing_page_app_bar"/>
+    <TextView
+        android:id="@+id/fiction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backIconLay"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:text="@string/fiction"
+        android:textColor="#EAF4F4"
+        android:textSize="36sp"
+        android:gravity="center_vertical"
+        />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fiction"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/listingRv"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                tools:listitem="@layout/listing_lay"
+                android:layout_marginTop="10dp"
+                />
+        </RelativeLayout>
+
+</RelativeLayout>
