@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/sign_up"
     android:background="#181A1A"
-    tools:context=".SignUpFragment">
+    tools:context=".fragments.SignUpFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,13 +15,13 @@
         android:background="@drawable/login_bg">
         <TextView
             android:id="@+id/recover_pas"
-            android:layout_width="296dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="32dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="235dp"
-            android:text="@string/recover_pas"
+            android:text="@string/signup"
             android:textAppearance="@style/recover_pas"
             android:gravity="center_vertical"
             />
@@ -42,7 +42,7 @@
                 android:id="@+id/forgot_your_pass"
                 android:layout_width="326dp"
                 android:layout_height="34dp"
-                android:text="@string/forgot_your"
+                android:text="@string/looks_like_"
                 android:textAppearance="@style/forgot_your_pass"
                 android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
@@ -51,7 +51,7 @@
             <RelativeLayout
                 android:id="@+id/frame_63"
                 android:layout_below="@+id/forgot_your_pass"
-                android:layout_width="326dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginHorizontal="16dp"
@@ -61,7 +61,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginHorizontal="16dp"
                     android:id="@+id/llEditTexts"
                     >
                     <include
@@ -78,11 +77,10 @@
                     android:id="@+id/terms"
                     android:layout_width="326dp"
                     android:layout_height="34dp"
-                    android:text="@string/terms"
-                    android:textAppearance="@style/terms"
-                    android:gravity="center_vertical"
                     android:layout_below="@id/llEditTexts"
-                    />
+                    android:gravity="center_vertical"
+                    android:text="@string/terms"
+                    android:textAppearance="@style/terms" />
 
                 <LinearLayout
                     android:id="@+id/btnSubmit"
@@ -96,7 +94,8 @@
                         android:id="@+id/btnContinue"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/submit"
+                        android:text="Create Account"
+                        android:textStyle="bold"
                         android:textAppearance="@style/submit"
                         android:gravity="center_horizontal|center_vertical"
                         />

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginEmailFragment"
-        android:name="com.example.books_app.LoginEmailFragment"
+        android:name="com.example.books_app.ui.fragments.LoginEmailFragment"
         android:label="fragment_login_email"
         tools:layout="@layout/fragment_login_email" >
         <action
@@ -22,30 +22,43 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.books_app.SignUpFragment"
+        android:name="com.example.books_app.ui.fragments.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_genrePreferencesFragment"
+            app:destination="@id/genrePreferencesFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_loginEmailFragment"
+            app:destination="@id/loginEmailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginPasswordFragment"
-        android:name="com.example.books_app.LoginPasswordFragment"
+        android:name="com.example.books_app.ui.fragments.LoginPasswordFragment"
         android:label="fragment_login_password"
         tools:layout="@layout/fragment_login_password" >
         <action
             android:id="@+id/action_loginPasswordFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginPasswordFragment_to_genrePreferencesFragment"
+            app:destination="@id/genrePreferencesFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.books_app.ForgotPasswordFragment"
+        android:name="com.example.books_app.ui.fragments.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
             android:id="@+id/action_forgotPasswordFragment_to_forgotPasswordCodeFragment"
             app:destination="@id/forgotPasswordCodeFragment" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordCodeFragment"
-        android:name="com.example.books_app.ForgotPasswordCodeFragment"
+        android:name="com.example.books_app.ui.fragments.ForgotPasswordCodeFragment"
         android:label="fragment_forgot_password_code"
         tools:layout="@layout/fragment_forgot_password_code" >
         <action
@@ -54,12 +67,16 @@
     </fragment>
     <fragment
         android:id="@+id/setPasswordFragment"
-        android:name="com.example.books_app.SetPasswordFragment"
+        android:name="com.example.books_app.ui.fragments.SetPasswordFragment"
         android:label="fragment_set_password"
-        tools:layout="@layout/fragment_set_password" />
+        tools:layout="@layout/fragment_set_password" >
+        <action
+            android:id="@+id/action_setPasswordFragment_to_loginPasswordFragment"
+            app:destination="@id/loginPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/genrePreferencesFragment"
-        android:name="com.example.books_app.GenrePreferencesFragment"
+        android:name="com.example.books_app.ui.fragments.GenrePreferencesFragment"
         android:label="fragment_genre_preferences"
         tools:layout="@layout/fragment_genre_preferences" />
 </navigation>

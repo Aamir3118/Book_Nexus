@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Books_App" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Books_App" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
@@ -196,5 +196,165 @@
     <style name="select_3_or">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">#C4CCCC</item>
+    </style>
+
+    <style name="royryan_mer">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="trending">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#313333</item>
+    </style>
+
+    <style name="get_unlimited">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="terms_condition">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="some_id">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#CDE7BE</item>
+    </style>
+
+    <style name="show_all">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#CDE7BE</item>
+    </style>
+
+    <style name="the_good_guy">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="mark_mcalli">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="continue_li">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#CDE7BE</item>
+    </style>
+
+    <style name="managers_wh">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="good_afternoon">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="minutes_rea">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="project_man">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="a_fanklinco">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="kory_kogon_">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="getting_alo">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="about_this_">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="personal_gr">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="explore">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="title_author">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#EDF3F3</item>
+    </style>
+
+    <style name="topics">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="saved_books">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#313333</item>
+    </style>
+
+    <style name="menu_text_style">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="feel_free">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#CDE7BE</item>
+    </style>
+
+    <style name="add_payment">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#CDE7BE</item>
+    </style>
+
+    <style name="ulimited_in">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="try_book_ne">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="billed_recu">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#2D3047</item>
+    </style>
+
+    <style name="by_continue">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#EAF4F4</item>
+    </style>
+
+    <style name="we_re_givin">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="premium_plan">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 </resources>

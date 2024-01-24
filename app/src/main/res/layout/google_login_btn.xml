@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/frame_47"
+    android:id="@+id/google_btn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/fb_login_layout">
 
     <ImageView
-        android:id="@+id/fb_icon"
+        android:id="@+id/gg_icon"
         android:layout_marginLeft="15.9dp"
         android:layout_width="30dp"
         android:layout_height="30dp"

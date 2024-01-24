@@ -2,7 +2,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llEmail"
+    android:id="@+id/llName"
     android:layout_width="match_parent"
     android:layout_height="32dp"
     android:paddingHorizontal="16dp"
@@ -11,6 +11,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/etEmail"
         android:hint="@string/email"
         android:layout_gravity="center_vertical"
         android:background="@android:color/transparent"
