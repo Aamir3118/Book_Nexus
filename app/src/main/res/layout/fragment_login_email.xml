@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipToOutline="true"
     android:background="#181A1A"
-    tools:context=".ui.fragments.LoginEmailFragment">
+    tools:context="ui.fragments.LoginEmailFragment">
 
     <RelativeLayout
         android:id="@+id/rectangle_3"
@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:indeterminateDrawable="@drawable/progress_bar"
             android:indeterminate="true"
+            android:visibility="gone"
             android:layout_centerInParent="true"
 
             />

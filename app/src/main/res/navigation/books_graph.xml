@@ -15,7 +15,8 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_loginEmailFragment_to_loginPasswordFragment"
-            app:destination="@id/loginPasswordFragment" />
+            app:destination="@id/loginPasswordFragment">
+        </action>
         <action
             android:id="@+id/action_loginEmailFragment_to_forgotPasswordFragment2"
             app:destination="@id/forgotPasswordFragment" />
@@ -37,6 +38,10 @@
         android:name="com.example.books_app.ui.fragments.LoginPasswordFragment"
         android:label="fragment_login_password"
         tools:layout="@layout/fragment_login_password" >
+        <argument
+            android:name="email_id"
+            android:defaultValue="email"
+            app:argType="string" />
         <action
             android:id="@+id/action_loginPasswordFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />

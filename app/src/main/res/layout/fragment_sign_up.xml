@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/sign_up"
     android:background="#181A1A"
-    tools:context=".fragments.SignUpFragment">
+    tools:context="ui.fragments.SignUpFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -64,11 +64,14 @@
                     android:id="@+id/llEditTexts"
                     >
                     <include
+                        android:id="@+id/nameLay"
                         layout="@layout/custom_name_layout"/>
                     <include
+                        android:id="@+id/emailLay"
                         layout="@layout/custom_email_layout"
                         />
                     <include
+                        android:id="@+id/PassLay"
                         layout="@layout/custom_password_layout"
                         />
                 </LinearLayout>
@@ -82,7 +85,7 @@
                     android:text="@string/terms"
                     android:textAppearance="@style/terms" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/btnSubmit"
                     android:layout_below="@+id/terms"
                     android:layout_width="326dp"
@@ -92,14 +95,22 @@
                     android:background="@drawable/btn_continue_layout">
                     <TextView
                         android:id="@+id/btnContinue"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Create Account"
                         android:textStyle="bold"
                         android:textAppearance="@style/submit"
                         android:gravity="center_horizontal|center_vertical"
+                        android:layout_centerInParent="true"
                         />
-                </LinearLayout>
+                    <ProgressBar
+                        android:layout_toRightOf="@+id/btnContinue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progress"
+                        android:visibility="gone"
+                        />
+                </RelativeLayout>
                 <TextView
                     android:id="@+id/already_have_acc"
                     android:layout_width="326dp"
