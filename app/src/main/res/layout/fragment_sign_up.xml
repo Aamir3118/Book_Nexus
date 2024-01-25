@@ -64,13 +64,16 @@
                     android:id="@+id/llEditTexts"
                     >
                     <include
+                        android:imeOptions="actionNext"
                         android:id="@+id/nameLay"
                         layout="@layout/custom_name_layout"/>
                     <include
+                        android:imeOptions="actionNext"
                         android:id="@+id/emailLay"
                         layout="@layout/custom_email_layout"
                         />
                     <include
+                        android:imeOptions="actionNext"
                         android:id="@+id/PassLay"
                         layout="@layout/custom_password_layout"
                         />

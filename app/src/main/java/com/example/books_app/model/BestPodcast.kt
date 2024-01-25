@@ -1,7 +1,5 @@
 package com.example.books_app.model
 
-import com.google.gson.annotations.SerializedName
-
 data class BestPodcast(
     val id: String,
     val name: String,

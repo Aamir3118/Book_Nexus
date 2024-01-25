@@ -1,23 +1,28 @@
 package com.example.books_app.ui.fragments
 
+import android.R
+import android.animation.ObjectAnimator
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.books_app.ui.activity.MyProfileActivity
-import com.example.books_app.R
-import com.example.books_app.ui.adapter.CustomBookAdapter
-import com.example.books_app.ui.adapter.CustomBookTrendingAdapter
 import com.example.books_app.base.BaseFragment
 import com.example.books_app.databinding.FragmentHomeScreen1Binding
+import com.example.books_app.ui.activity.MyProfileActivity
+import com.example.books_app.ui.adapter.CustomBookAdapter
 import com.example.books_app.ui.view_model.MainViewModel
+import com.facebook.shimmer.ShimmerFrameLayout
+
 
 /**
  * A simple [Fragment] subclass.
@@ -45,7 +50,7 @@ class HomeScreen1Fragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = com.example.books_app.databinding.FragmentHomeScreen1Binding.inflate(inflater, container, false)
+        binding = FragmentHomeScreen1Binding.inflate(inflater, container, false)
         return binding!!.root
     }
 
@@ -64,7 +69,6 @@ class HomeScreen1Fragment : BaseFragment() {
                 recyclerView.adapter = bookAdapter
             }
         }
-
 
 
         //trending
@@ -92,32 +96,21 @@ class HomeScreen1Fragment : BaseFragment() {
             }
         }
 
+
         //profile
         binding?.profilePic?.setOnClickListener {
-            //Navigation.findNavController(view).navigate(R.id.actioh)
-            val profileIntent = Intent(requireContext(), com.example.books_app.ui.activity.MyProfileActivity::class.java)
+            val profileIntent = Intent(requireContext(),MyProfileActivity::class.java)
             startActivity(profileIntent)
         }
-
 
         genreViewModel.observeGenre(this){
             genre ->
             Log.d("Genre", genre.toString())
         }
 
-
-//        genreViewModel.observePodcast(this){
-//            podcast ->
-//            Log.d("Podcast",podcast.toString())
-//        }
-
         genreViewModel.observeBook(this){
             book ->
             Log.d("PodcastData",book.toString())
         }
-
-//        genreViewModel.observeGenreNames(this){
-//            genreNm -> Log.d("gn",genreNm.toString())
-//        }
     }
 }

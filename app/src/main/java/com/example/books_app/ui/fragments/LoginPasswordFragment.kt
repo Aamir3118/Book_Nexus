@@ -3,15 +3,19 @@ package com.example.books_app.ui.fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.books_app.R
 import com.example.books_app.base.BaseFragment
 import com.example.books_app.databinding.FragmentLoginPasswordBinding
+import com.example.books_app.ui.activity.HomeActivity
 import com.example.books_app.validation.EmailValidator
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -29,6 +33,8 @@ class LoginPasswordFragment : BaseFragment() {
     private var binding: FragmentLoginPasswordBinding? = null
     private var email: String? = null
     private lateinit var auth: FirebaseAuth
+    private var isPasswordVisible = false
+    private lateinit var inputMethodManager: InputMethodManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +57,29 @@ class LoginPasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        inputMethodManager =
+            requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val homeIntent = Intent(requireContext(), HomeActivity::class.java)
+            startActivity(homeIntent)
+            requireActivity().finish()
+            return
+        }
+
+        binding?.loginPassword?.setOnClickListener {
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
+        binding?.userEmail?.text = email
+
+        binding?.llPass?.eye?.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            togglePasswordVisibility()
+        }
+
         binding?.frame47?.setOnClickListener {
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             val password = binding?.llPass?.etPass?.text.toString()
             if (password.isEmpty()){
                 showToast("Password is required")
@@ -84,6 +112,17 @@ class LoginPasswordFragment : BaseFragment() {
         }
 
     }
+
+    private fun togglePasswordVisibility() {
+        val transformationMethod = if (isPasswordVisible) null else PasswordTransformationMethod.getInstance()
+        binding?.llPass?.etPass?.transformationMethod = transformationMethod
+
+        // Change eye icon based on visibility
+        val eyeIcon =
+            if (isPasswordVisible) R.drawable.eye_icon else R.drawable.baseline_visibility_24
+        binding?.llPass?.eye?.setImageResource(eyeIcon)
+    }
+
     private fun saveLoginState(){
         val sharedPreferences = requireContext().getSharedPreferences("BookApp", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()

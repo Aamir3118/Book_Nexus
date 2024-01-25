@@ -4,8 +4,6 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.books_app.R
 import com.example.books_app.base.BaseBookAdapter
-import com.example.books_app.model.BookImg
-import com.example.books_app.model.BookImg2
 import com.example.books_app.model.Episode
 import com.example.books_app.ui.fragments.HomeScreen1FragmentDirections
 

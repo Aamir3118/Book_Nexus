@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/etEmail"
         android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
         android:layout_gravity="center_vertical"
         android:background="@android:color/transparent"
         />

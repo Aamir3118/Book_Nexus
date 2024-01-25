@@ -28,14 +28,10 @@ import com.google.firebase.auth.GoogleAuthProvider
  * create an instance of this fragment.
  */
 class LoginEmailFragment : BaseFragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var binding: FragmentLoginEmailBinding? = null
-    lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
     lateinit var mGoogleSignInOptions: GoogleSignInOptions
-    val Req_Code: Int = 123
-    val RC_SIGN_IN: Int = 1
+    private val RC_SIGN_IN: Int = 1
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +53,14 @@ class LoginEmailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null){
+            val homeIntent = Intent(requireContext(), HomeActivity::class.java)
+            startActivity(homeIntent)
+            requireActivity().finish()
+            return
+        }
+
         binding?.btnContinue?.setOnClickListener {
             val email = binding?.email?.etEmail?.text.toString()
             if (email.isEmpty()){
@@ -70,8 +74,6 @@ class LoginEmailFragment : BaseFragment() {
                     LoginEmailFragmentDirections.actionLoginEmailFragmentToLoginPasswordFragment()
                 action.setEmailId(email)
                 Navigation.findNavController(it).navigate(action)
-//                val action = LoginEmailFragmentDirections.actionLoginEmailFragmentToLoginPasswordFragment(=)
-//                navigateToFragment(action.actionId)
             }
         }
         binding?.noAcc?.setOnClickListener {
@@ -123,8 +125,6 @@ class LoginEmailFragment : BaseFragment() {
         val credential = GoogleAuthProvider.getCredential(completeTask.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful){
-
-                //navigateToFragment(R.id.action_loginPasswordFragment_to_genrePreferencesFragment)
                 val homeIntent = Intent(requireContext(),HomeActivity::class.java)
                 startActivity(homeIntent)
             }

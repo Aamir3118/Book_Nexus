@@ -1,6 +1,5 @@
 package com.example.books_app.ui.fragments
 
-import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -19,12 +18,6 @@ import com.example.books_app.databinding.FragmentAudioPlayerBinding
 import com.example.books_app.model.Episode
 import com.example.books_app.ui.view_model.MainViewModel
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AudioPlayerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AudioPlayerFragment : BaseFragment() {
 
     private val audioViewModel: MainViewModel by lazy {
@@ -32,11 +25,13 @@ class AudioPlayerFragment : BaseFragment() {
     }
 
     private var selectedEpisode: Episode? = null
+    private var isPrepared: Boolean = false
     private var isPlaying: Boolean = false
     private var playbackPosition: Int = 0
+    private var start_txt:String = "0:00"
     lateinit var mediaPlayer: MediaPlayer
     private var binding: FragmentAudioPlayerBinding? = null
-    private lateinit var nextEpisode:Episode
+    private lateinit var nextEpisode: Episode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +45,6 @@ class AudioPlayerFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentAudioPlayerBinding.inflate(inflater, container, false)
         return binding!!.root
     }
@@ -63,9 +57,9 @@ class AudioPlayerFragment : BaseFragment() {
         }
 
         selectedEpisode?.let {
-            val audio_len_min = (selectedEpisode!!.audioLengthSec/60)
-            val remainingSeconds = (selectedEpisode!!.audioLengthSec%60)
-            val final_audio_len = String.format("%02d:%02d",audio_len_min,remainingSeconds)
+            val audio_len_min = (selectedEpisode!!.audioLengthSec / 60)
+            val remainingSeconds = (selectedEpisode!!.audioLengthSec % 60)
+            val final_audio_len = String.format("%02d:%02d", audio_len_min, remainingSeconds)
 
             binding?.bgImg?.let { it1 ->
                 Glide.with(requireContext())
@@ -76,12 +70,14 @@ class AudioPlayerFragment : BaseFragment() {
             binding?.title?.text = selectedEpisode!!.title
 
             binding?.icRound?.setOnClickListener {
-                stopPlayback()
-                val action = AudioPlayerFragmentDirections.actionAudioPlayerFragment2ToDetailPageFragment2(selectedEpisode)
+                val action =
+                    AudioPlayerFragmentDirections.actionAudioPlayerFragment2ToDetailPageFragment2(
+                        selectedEpisode
+                    )
                 Navigation.findNavController(it).navigate(action)
             }
 
-            binding?.end?.text = "-"+final_audio_len
+            binding?.end?.text = "-$final_audio_len"
 
             binding?.fluentSkipBack?.setOnClickListener {
                 moveBackward10sec()
@@ -91,6 +87,7 @@ class AudioPlayerFragment : BaseFragment() {
             }
 
             binding?.skipBack?.setOnClickListener {
+                mediaPlayer.stop()
                 audioViewModel.observeEpisodes(this) { episodes ->
                     val currentIndex = episodes.indexOf(selectedEpisode)
                     val lastIndex = episodes.size - 1
@@ -105,6 +102,7 @@ class AudioPlayerFragment : BaseFragment() {
                 }
             }
             binding?.skipForward?.setOnClickListener {
+                mediaPlayer.stop()
                 audioViewModel.observeEpisodes(this) { episodes ->
                     val currentIndex = episodes.indexOf(selectedEpisode)
                     val lastIndex = episodes.size - 1
@@ -120,6 +118,7 @@ class AudioPlayerFragment : BaseFragment() {
                     setupAudioPlayer(nextEpisode)
                 }
             }
+
             binding?.frame81?.setOnClickListener {
                 togglePlayBack()
             }
@@ -127,6 +126,7 @@ class AudioPlayerFragment : BaseFragment() {
     }
 
     private fun setupAudioPlayer(episode: Episode) {
+        nextEpisode = episode
         val audio_len_min = (episode.audioLengthSec / 60)
         val remainingSeconds = (episode.audioLengthSec % 60)
         val final_audio_len = String.format("%02d:%02d", audio_len_min, remainingSeconds)
@@ -149,14 +149,27 @@ class AudioPlayerFragment : BaseFragment() {
         }
         isPlaying = !isPlaying
     }
+
     private fun startPlayback() {
+        binding?.progress?.visibility = View.VISIBLE
+        binding?.playStart?.visibility = View.GONE
         binding?.playStart?.let { img ->
             Glide.with(requireContext())
                 .load(R.drawable.uil_pause)
                 .into(img)
         }
-        binding?.progress?.visibility = View.VISIBLE
-        binding?.playStart?.visibility = View.GONE
+
+        mediaPlayer.setOnCompletionListener {
+            // Called when the playback is completed
+            isPlaying = false
+            binding?.playStart?.let { img ->
+                Glide.with(requireContext())
+                    .load(R.drawable.uil_play)
+                    .into(img)
+            }
+            binding?.progressBarHorizontal?.progress = 0
+            binding?.start?.text = start_txt
+        }
 
         try {
             mediaPlayer.reset()
@@ -165,6 +178,7 @@ class AudioPlayerFragment : BaseFragment() {
             mediaPlayer.prepareAsync()
 
             mediaPlayer.setOnPreparedListener {
+                isPrepared = true
                 binding?.progress?.visibility = View.GONE
                 binding?.playStart?.visibility = View.VISIBLE
 
@@ -172,43 +186,48 @@ class AudioPlayerFragment : BaseFragment() {
                 val totalDuration = mediaPlayer.duration
                 binding?.progressBarHorizontal?.max = totalDuration
 
-                binding?.progressBarHorizontal?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+                binding?.progressBarHorizontal?.setOnSeekBarChangeListener(object :
+                    SeekBar.OnSeekBarChangeListener {
                     override fun onProgressChanged(
                         seekBar: SeekBar?,
                         progress: Int,
                         fromUser: Boolean
                     ) {
                         if (fromUser) {
-                            // Update the current playback time TextView
                             val currentTime = formatTime(progress)
                             binding?.start?.text = currentTime
-                            // Seek to the selected position in the audio file
                             mediaPlayer.seekTo(progress)
                         }
                     }
 
-                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
-                    }
-
-                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-                    }
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
                 })
-                // Update the end time TextView
                 val endTime = formatTime(totalDuration)
                 binding?.end?.text = "-$endTime"
-
-                mediaPlayer.seekTo(0)
+                if (playbackPosition > 0) {
+                    mediaPlayer.seekTo(playbackPosition)
+                    playbackPosition = 0
+                } else {
+                    mediaPlayer.seekTo(0)
+                }
                 mediaPlayer.start()
 
                 startProgressUpdater(totalDuration)
-
             }
-
+            mediaPlayer.setOnErrorListener { _, _, _ ->
+                // Handle error
+                Log.e("Audio", "Error during MediaPlayer preparation")
+                isPrepared = false
+                binding?.progress?.visibility = View.GONE
+                binding?.playStart?.visibility = View.VISIBLE
+                false
+            }
         } catch (e: Exception) {
             Log.e("Audio", "Error preparing MediaPlayer: ${e.message}")
+            isPrepared = false
             binding?.progress?.visibility = View.GONE
             binding?.playStart?.visibility = View.VISIBLE
         }
@@ -219,17 +238,13 @@ class AudioPlayerFragment : BaseFragment() {
         val updateProgress = object : Runnable {
             override fun run() {
                 updateProgress()
-                // Update the current playback time TextView
                 val currentTime = formatTime(mediaPlayer.currentPosition)
                 binding?.start?.text = currentTime
 
-                // Update the progress of the ProgressBar
                 val progress = mediaPlayer.currentPosition
                 binding?.progressBarHorizontal?.progress = progress
 
-                // Check if the playback has reached the end
                 if (mediaPlayer.currentPosition >= totalDuration) {
-                    // Playback has reached the end, stop updating progress
                     binding?.playStart?.let { img ->
                         Glide.with(requireContext())
                             .load(R.drawable.uil_play)
@@ -237,13 +252,11 @@ class AudioPlayerFragment : BaseFragment() {
                     }
                     binding?.progressBarHorizontal?.progress = 0
                 } else {
-                    // Schedule the next update
-                    handler.postDelayed(this, 1000) // Update every second
+                    handler.postDelayed(this, 1000)
                 }
             }
         }
 
-        // Start the progress updater
         handler.post(updateProgress)
     }
 
@@ -261,11 +274,9 @@ class AudioPlayerFragment : BaseFragment() {
         }
 
         if (mediaPlayer.isPlaying) {
-            mediaPlayer.pause()
             playbackPosition = mediaPlayer.currentPosition
-
+            mediaPlayer.pause()
             binding?.progressBarHorizontal?.progress = playbackPosition
-
             Log.d("Audio", "Audio paused")
         } else {
             Log.d("Audio", "Audio not played")
@@ -273,31 +284,17 @@ class AudioPlayerFragment : BaseFragment() {
         binding?.progress?.visibility = View.GONE
     }
 
-    private fun stopPlayback() {
+    private fun moveForward10Sec() {
         if (mediaPlayer.isPlaying) {
-            mediaPlayer.stop()
-            mediaPlayer.release()
-            isPlaying = false
-            binding?.playStart?.let { img ->
-                Glide.with(requireContext())
-                    .load(R.drawable.uil_play)
-                    .into(img)
-            }
-            binding?.progressBarHorizontal?.progress = 0
-            binding?.progress?.visibility = View.GONE
-        }
-    }
-
-    private fun moveForward10Sec(){
-        if (mediaPlayer.isPlaying) {
-            val newPosition = mediaPlayer.currentPosition + (10 * 1000) // 10 minutes in milliseconds
+            val newPosition = mediaPlayer.currentPosition + (10 * 1000)
             if (newPosition < mediaPlayer.duration) {
                 mediaPlayer.seekTo(newPosition)
                 updateProgress()
             }
         }
     }
-    private fun moveBackward10sec(){
+
+    private fun moveBackward10sec() {
         if (mediaPlayer.isPlaying) {
             val newPosition = mediaPlayer.currentPosition - (10 * 1000)
             if (newPosition >= 0) {
@@ -318,4 +315,3 @@ class AudioPlayerFragment : BaseFragment() {
         binding?.progressBarHorizontal?.progress = progress
     }
 }
-

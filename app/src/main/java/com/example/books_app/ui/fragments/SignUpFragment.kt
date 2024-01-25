@@ -2,6 +2,7 @@ package com.example.books_app.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,7 @@ class SignUpFragment : BaseFragment() {
     private var binding: FragmentSignUpBinding? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var inputMethodManager: InputMethodManager
+    private var isPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +51,26 @@ class SignUpFragment : BaseFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        inputMethodManager =
+            requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+
         super.onViewCreated(view, savedInstanceState)
+        binding?.signUp?.setOnClickListener {
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
         binding?.alreadyHaveAcc?.setOnClickListener {
             navigateToFragment(R.id.action_signUpFragment_to_loginEmailFragment)
         }
         binding?.btnSubmit?.setOnClickListener {
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             signUpUser()
+        }
+
+        binding?.PassLay?.eye?.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            togglePasswordVisibility()
         }
     }
 
@@ -93,6 +109,16 @@ class SignUpFragment : BaseFragment() {
                 }
             }
         }
+    }
+
+    private fun togglePasswordVisibility() {
+        val transformationMethod = if (isPasswordVisible) null else PasswordTransformationMethod.getInstance()
+        binding?.PassLay?.etPass?.transformationMethod = transformationMethod
+
+        // Change eye icon based on visibility
+        val eyeIcon =
+            if (isPasswordVisible) R.drawable.eye_icon else R.drawable.baseline_visibility_24
+        binding?.PassLay?.eye?.setImageResource(eyeIcon)
     }
 
     private fun checkUserIsSignedIn(){

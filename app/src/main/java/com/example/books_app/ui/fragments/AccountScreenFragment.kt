@@ -1,6 +1,5 @@
 package com.example.books_app.ui.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,9 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class AccountScreenFragment : BaseFragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var binding: FragmentAccountScreenBinding? = null
     lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -41,10 +37,11 @@ class AccountScreenFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.heading?.explore?.text = getString(R.string.account)
+
         binding?.profileList?.frame136?.setOnClickListener {
             navigateToFragment(R.id.action_accountScreenFragment_to_profileDetailsFragment)
-//            Navigation.findNavController(view)
-//                .navigate(R.id.action_accountScreenFragment_to_profileDetailsFragment)
         }
         binding?.profileList?.frame139?.setOnClickListener {
             navigateToFragment(R.id.action_accountScreenFragment_to_selectAccountFragment)
@@ -53,20 +50,32 @@ class AccountScreenFragment : BaseFragment() {
             navigateToFragment(R.id.action_accountScreenFragment_to_premiumPlansFragment2)
         }
 
+        if (auth.currentUser != null){
+            binding?.userDetails?.userEmail?.text = auth.currentUser!!.email
+            binding?.userDetails?.username?.text = auth.currentUser!!.displayName
+        }
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(R.string.web_client_id.toString())
             .requestEmail()
             .build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+
         binding?.profileList?.logoutLay?.setOnClickListener {
             mGoogleSignInClient.signOut().addOnCompleteListener {
-//                val sharedPreferences =requireContext().getSharedPreferences("BookApp", Context.MODE_PRIVATE)
-//                val editor = sharedPreferences.edit()
-//                editor.putBoolean("isLoggedIn",false)
-//                editor.apply()
                 val intent = Intent(requireContext(), MainActivity::class.java)
-                showToast("Logging Out")
                 startActivity(intent)
+            }
+
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                auth.signOut()
+
+                // Navigate to the main activity or any other desired destination
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                startActivity(intent)
+            } else {
+                showToast("User is not signed in with email/password")
             }
     }
 }

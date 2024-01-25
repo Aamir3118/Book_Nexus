@@ -1,23 +1,17 @@
 package com.example.books_app.ui.fragments
-import com.example.books_app.ui.adapter.CustomChipAdapter
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.books_app.ui.activity.HomeActivity
-import com.example.books_app.R
 import com.example.books_app.base.BaseFragment
 import com.example.books_app.databinding.FragmentGenrePreferencesBinding
-import com.example.books_app.model.ChipData
-import com.example.books_app.ui.adapter.GenreSelectionListener
 import com.example.books_app.ui.view_model.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -27,11 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
  * create an instance of this fragment.
  */
 class GenrePreferencesFragment : BaseFragment(){
-    private var additionalGenresVisible = false
-    private var param1: String? = null
-    private var param2: String? = null
     private var binding: FragmentGenrePreferencesBinding? = null
-    private lateinit var auth: FirebaseAuth
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,11 +79,5 @@ class GenrePreferencesFragment : BaseFragment(){
             }
         }
 
-    }
-    private fun showProgressBar() {
-        binding?.progessbar?.visibility = View.VISIBLE
-    }
-    private fun hideProgressBar() {
-        binding?.progessbar?.visibility = View.GONE
     }
 }

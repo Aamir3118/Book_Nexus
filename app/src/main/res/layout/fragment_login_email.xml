@@ -60,10 +60,11 @@
 
             <include
                 android:id="@+id/email"
+                android:imeOptions="actionNext"
                 layout="@layout/custom_email_layout"
                 />
         </RelativeLayout>
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/frame_47"
             android:layout_below="@+id/frame_63"
             android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                 android:textAppearance="@style/button_next"
                 android:gravity="center_horizontal|center_vertical"
                 />
-        </LinearLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/forgot_pass"
@@ -106,7 +107,7 @@
                 android:orientation="horizontal">
                 <View
                     android:id="@+id/vector_4"
-                    android:layout_width="138dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="1dp"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
@@ -118,6 +119,7 @@
                     android:layout_width="18dp"
                     android:layout_height="17dp"
                     android:text="@string/or"
+
                     android:textAppearance="@style/or"
                     android:gravity="center_vertical"
                     />

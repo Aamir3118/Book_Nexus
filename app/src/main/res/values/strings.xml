@@ -126,4 +126,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_my_profile">MyProfileActivity</string>
+    <string name="account">Account</string>
 </resources>

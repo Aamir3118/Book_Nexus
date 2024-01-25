@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -13,8 +14,9 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.books_app.R
 import com.example.books_app.ui.fragments.HomeScreen1FragmentDirections
+import com.facebook.shimmer.ShimmerFrameLayout
 
-abstract class BaseBookAdapter<T>(private val books: List<T>, private val layoutResourceId: Int) :
+abstract class BaseBookAdapter<T>(private var books: List<T>, private val layoutResourceId: Int) :
     RecyclerView.Adapter<BaseBookAdapter.BaseBookViewHolder>() {
     protected lateinit var context: Context
     class BaseBookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -51,4 +53,9 @@ abstract class BaseBookAdapter<T>(private val books: List<T>, private val layout
     override fun onBindViewHolder(holder: BaseBookViewHolder, position: Int) {
         onBind(holder, position)
     }
+
+//    open fun updateData(newBooks: List<T>) {
+//        books = newBooks
+//        notifyDataSetChanged()
+//    }
 }

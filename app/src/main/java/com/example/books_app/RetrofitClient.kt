@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     fun getInstance(): Retrofit {
-       //val BASE_URL = "https://dummyjson.com/"
         val BASE_URL = "https://listen-api-test.listennotes.com/api/v2/"
         //Logging interceptor
         val loggingInterceptor = HttpLoggingInterceptor().apply {

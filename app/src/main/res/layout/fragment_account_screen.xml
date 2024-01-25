@@ -8,6 +8,7 @@
     android:background="#181A1A">
 
     <include
+        android:id="@+id/appBar"
         layout="@layout/listing_page_app_bar"
         />
     <RelativeLayout
@@ -16,9 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="16dp"
-        android:layout_below="@+id/top_navigate"
+        android:layout_below="@+id/appBar"
         >
         <include
+            android:id="@+id/heading"
             layout="@layout/top_heading_layout"
             />
     </RelativeLayout>
@@ -33,6 +35,7 @@
         >
 
         <include
+            android:id="@+id/userDetails"
             layout="@layout/drawer_header_layout"
             />
     </RelativeLayout>

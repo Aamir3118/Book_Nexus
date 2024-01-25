@@ -2,7 +2,6 @@ package com.example.books_app.ui.adapter
 
 import com.example.books_app.R
 import com.example.books_app.base.BaseBookAdapter
-import com.example.books_app.model.BookImg
 import com.example.books_app.model.TabData
 
 class CustomTabAdapter(private val tabs: List<TabData>):
